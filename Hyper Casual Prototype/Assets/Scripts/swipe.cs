@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class swipe : MonoBehaviour
@@ -11,16 +9,18 @@ public class swipe : MonoBehaviour
     public Color[] colors;
 
     public GameObject scrollbar; //imageContent;
+
     public GameObject currentItem;
 
     private float scroll_pos = 0;
+
     float[] pos;
+
     private float time;
 
     private bool runIt = false;
 
     private Button takeTheBtn;
-
 
     int btnNumber;
 
@@ -76,14 +76,10 @@ public class swipe : MonoBehaviour
                 Debug.LogWarning("Current Selected Level" + i);
                 currentItem = transform.GetChild(i).gameObject;
                 transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1f, 1f), 0.1f);
-               // imageContent.transform.GetChild(i).localScale = Vector2.Lerp(imageContent.transform.GetChild(i).localScale, new Vector2(1.2f, 1.2f), 0.1f);
-               // imageContent.transform.GetChild(i).GetComponent<Image>().color = colors[1];
                 for (int j = 0; j < pos.Length; j++)
                 {
                     if (j != i)
                     {
-                        // imageContent.transform.GetChild(j).GetComponent<Image>().color = colors[0];
-                        // imageContent.transform.GetChild(j).localScale = Vector2.Lerp(imageContent.transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
                         transform.GetChild(j).localScale = Vector2.Lerp(transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
                     }
                 }
@@ -95,7 +91,6 @@ public class swipe : MonoBehaviour
 
     private void GecisiDuzenle(float distance, float[] pos, Button btn)
     {
-        // btnSayi = System.Int32.Parse(btn.transform.name);
 
         for (int i = 0; i < pos.Length; i++)
         {

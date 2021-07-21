@@ -7,7 +7,7 @@ public class SaveManager : MonoBehaviour
 {
 	public PlayerSave state;
 
-	private string name = "66666666";
+	private string name = "GAME";
 
 	public static SaveManager Instance
 	{

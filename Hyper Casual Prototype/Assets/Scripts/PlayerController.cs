@@ -5,16 +5,20 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed;
+
     public float forwardMoveSpeed;
 
     [HideInInspector]
     public bool moveRight;
+
     [HideInInspector]
     public bool moveLeft;
+
     [HideInInspector]
     public bool Once;
 
     public GameObject CollisionFx;
+
     public GameObject CoinFx;
 
     // Start is called before the first frame update
@@ -60,20 +64,6 @@ public class PlayerController : MonoBehaviour
                 moveLeft = !moveLeft;
                 moveRight = !moveRight;
             }
-
-
-            
-            //  if (Input.GetKey(KeyCode.A))
-            //  {
-            //    moveLeft = true;
-            //    moveRight = false;
-            //}
-            // if (Input.GetKey(KeyCode.D))
-            // {
-            //    moveRight = true;
-            //    moveLeft = false;
-            //}
-
 
         }
     }
@@ -123,7 +113,6 @@ public class PlayerController : MonoBehaviour
                     InitializeAds.Instance.ShowAd();
                 }
                 GameManager.Instance.ChangeGameState(GameManager.GameState.GameOver);
-                //gameObject.SetActive(false);
             }
             SaveManager.Instance.Save();
 
