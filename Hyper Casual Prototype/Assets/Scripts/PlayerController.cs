@@ -21,6 +21,19 @@ public class PlayerController : MonoBehaviour
 
     public GameObject CoinFx;
 
+    public Camera cam;
+
+    private float moveAmount;
+
+    public GameObject rightScorer;
+
+    public GameObject leftScorer;
+
+    private void Awake()
+    {
+        DetectCameraEdges();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +59,12 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameManager.GameState.GamePlay)
         {
-                if (Once && Random.value <= 0.5f)
-                {
-                    moveLeft = true;
-                    moveRight = false;
-                    Once = false;
-                }
+            if (Once && Random.value <= 0.5f)
+            {
+                moveLeft = true;
+                moveRight = false;
+                Once = false;
+            }
             else if (Once)
             {
                 moveRight = true;
@@ -67,18 +80,19 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
     private void Move()
     {
         
 
         if (moveRight)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(6.7f, transform.position.y), moveSpeed * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(-(moveAmount + transform.localScale.x / 2), transform.position.y), moveSpeed * Time.deltaTime);
         }
 
         if (moveLeft)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(-6.7f, transform.position.y), moveSpeed * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(moveAmount + transform.localScale.x / 2, transform.position.y), moveSpeed * Time.deltaTime);
         }
     }
 
@@ -127,6 +141,25 @@ public class PlayerController : MonoBehaviour
             SaveManager.Instance.state.Coin++;
             SaveManager.Instance.Save();
         }
+    }
+
+    private void DetectCameraEdges()
+    {
+        if (!cam.orthographic) 
+        { 
+            Debug.LogError("Camera.main is not Orthographic, failed to find camera edge"); 
+            return;
+        }
+
+        var bottomLeft = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+
+        moveAmount = bottomLeft.x;
+
+        rightScorer.transform.position = new Vector2(-(moveAmount + 0.5f), 0);
+        leftScorer.transform.position = new Vector2(moveAmount + 0.5f, 0);
+
+        Debug.Log(moveAmount);
+
     }
 
 

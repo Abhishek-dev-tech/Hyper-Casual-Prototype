@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 57780248}
   - component: {fileID: 57780249}
   m_Layer: 0
-  m_Name: Scorer (1)
+  m_Name: RightScorer
   m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5101,6 +5101,9 @@ MonoBehaviour:
   CollisionFx: {fileID: 5284320842229692294, guid: 1ee1469557955564c9b9eeb04efb572b,
     type: 3}
   CoinFx: {fileID: 2329644165994981567, guid: 5fc6492dc72f0cd47ba8da45fc327d4c, type: 3}
+  cam: {fileID: 519420031}
+  rightScorer: {fileID: 57780247}
+  leftScorer: {fileID: 1452041724}
 --- !u!50 &1310882077
 Rigidbody2D:
   serializedVersion: 4
@@ -6181,7 +6184,7 @@ GameObject:
   - component: {fileID: 1452041725}
   - component: {fileID: 1452041726}
   m_Layer: 0
-  m_Name: Scorer
+  m_Name: LeftScorer
   m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
